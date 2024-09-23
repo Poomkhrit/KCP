@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Dress Up Game</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .game-container, .main-menu {
+            text-align: center;
+            width: 100%;
+        }
+
+        .main-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .main-menu img {
+            width: 500px;
+            height: auto;
+        }
+
+        .main-menu button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #6200ea;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .main-menu button:hover {
+            background-color: #3700b3;
+        }
+
+        .game-container {
+            display: none;
+        }
+
+        .base-container {
+            position: relative;
+            width: 500px;
+            height: 700px;
+            margin: 20px auto 0 auto;
+        }
+
+        .base-container img {
+            width: 500px;
+            height: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        .category {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .character-section {
+            margin-bottom: 40px;
+        }
+
+        .character-section h2 {
+            margin-bottom: 10px;
+        }
+
+        .category .character {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+        }
+
+        .category h3 {
+            margin: 10px 0;
+        }
+
+        .category img {
+            width: 100px;
+            height: auto;
+            margin: 0.01px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 5px;
+        }
+
+        .category img:hover {
+            border-color: #3700b3;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-menu">
+        <img src="Mainmenu.png" alt="Main Menu Image">
+        <button onclick="enterGame()">Play</button>
+    </div>
+
+    <div class="game-container">
+        <div class="base-container">
+            <img id="base-image" src="Base.png" alt="Base Image">
+            <!-- Underwear Images -->
+            <img id="underwear-k-image" src="Underweark.png" alt="Kouign Amann Underwear" style="visibility: hidden;">
+            <img id="underwear-k3-image" src="Underweark3.png" alt="Kouign Amann Underwear 3" style="visibility: hidden;">
+            <img id="underwear-k4-image" src="Underweark4.png" alt="Kouign Amann Underwear 4" style="visibility: hidden;">
+            <img id="underwear-c-image" src="Underwearc.png" alt="Capsaicin Underwear" style="visibility: hidden;">
+            <img id="underwear-c3-image" src="Underwearc3.png" alt="Capsaicin Underwear 3" style="visibility: hidden;">
+            <img id="underwear-c4-image" src="Underwearc4.png" alt="Capsaicin Underwear 4" style="visibility: hidden;">
+            <img id="underwear-p-image" src="Underwearp.png" alt="Prune Underwear" style="visibility: hidden;">
+            <img id="underwear-p4-image" src="Underwearp4.png" alt="Prune Underwear 4" style="visibility: hidden;">
+            <!-- Bodysuits -->
+            <img id="bodysuit-k-image" src="Bodysuitk.png" alt="Kouign Amann Bodysuit" style="visibility: hidden;">
+            <img id="bodysuit-c-image" src="Bodysuitc.png" alt="Capsaicin Bodysuit" style="visibility: hidden;">
+            <img id="bodysuit-p-image" src="Bodysuitp.png" alt="Prune Bodysuit" style="visibility: hidden;">
+            <!-- Accessories -->
+            <img id="accessory-k-image" src="Accessoryk.png" alt="Kouign Amann Accessory" style="visibility: hidden;">
+            <img id="accessory-k2-image" src="Accessoryk2.png" alt="Kouign Amann Accessory 2" style="visibility: hidden;">
+            <img id="accessory-c-image" src="Accessoryc.png" alt="Capsaicin Accessory" style="visibility: hidden;">
+            <img id="accessory-c2-image" src="Accessoryc2.png" alt="Capsaicin Accessory 2" style="visibility: hidden;">
+            <img id="accessory-p-image" src="Accessoryp.png" alt="Prune Accessory" style="visibility: hidden;">
+            <img id="accessory-p2-image" src="Accessoryp2.png" alt="Prune Accessory 2" style="visibility: hidden;">
+        </div>
+
+        <div class="controls">
+            <!-- Kouign Amann Section -->
+            <div class="character-section">
+                <h2>Kouign Amann</h2>
+                <div class="category">
+                    <h3>Underwear</h3>
+                    <img src="Underwearkb.png" alt="Kouign Amann Underwear 1" onclick="toggleClothing('underwear-k-image')">
+                    <img src="Underwearkb2.png" alt="Kouign Amann Underwear 2" onclick="toggleClothing('underwear-k-image')">
+                    <img src="Underwearkb3.png" alt="Kouign Amann Underwear 3" onclick="toggleClothing('underwear-k3-image')">
+                    <img src="Underwearkb4.png" alt="Kouign Amann Underwear 4" onclick="toggleClothing('underwear-k4-image')">
+                </div>
+                <div class="category">
+                    <h3>Bodysuit</h3>
+                    <img src="Bodysuitkb.png" alt="Kouign Amann Bodysuit" onclick="toggleClothing('bodysuit-k-image')">
+                </div>
+                <div class="category">
+                    <h3>Accessory</h3>
+                    <img src="Accessorykb.png" alt="Kouign Amann Accessory" onclick="toggleClothing('accessory-k-image')">
+                    <img src="Accessorykb2.png" alt="Kouign Amann Accessory 2" onclick="toggleClothing('accessory-k2-image')">
+                </div>
+            </div>
+
+            <!-- Capsaicin Section -->
+            <div class="character-section">
+                <h2>Capsaicin</h2>
+                <div class="category">
+                    <h3>Underwear</h3>
+                    <img src="Underwearcb.png" alt="Capsaicin Underwear 1" onclick="toggleClothing('underwear-c-image')">
+                    <img src="Underwearcb2.png" alt="Capsaicin Underwear 2" onclick="toggleClothing('underwear-c2-image')">
+                    <img src="Underwearcb3.png" alt="Capsaicin Underwear 3" onclick="toggleClothing('underwear-c3-image')">
+                    <img src="Underwearcb4.png" alt="Capsaicin Underwear 4" onclick="toggleClothing('underwear-c4-image')">
+                </div>
+                <div class="category">
+                    <h3>Bodysuit</h3>
+                    <img src="Bodysuitcb.png" alt="Capsaicin Bodysuit" onclick="toggleClothing('bodysuit-c-image')">
+                </div>
+                <div class="category">
+                    <h3>Accessory</h3>
+                    <img src="Accessorycb.png" alt="Capsaicin Accessory" onclick="toggleClothing('accessory-c-image')">
+                    <img src="Accessorycb2.png" alt="Capsaicin Accessory 2" onclick="toggleClothing('accessory-c2-image')">
+                </div>
+            </div>
+
+            <!-- Prune Section -->
+            <div class="character-section">
+                <h2>Prune</h2>
+                <div class="category">
+                    <h3>Underwear</h3>
+                    <img src="Underwearpb.png" alt="Prune Underwear 1" onclick="toggleClothing('underwear-p-image')">
+                    <img src="Underwearpb2.png" alt="Prune Underwear 2" onclick="toggleClothing('underwear-p2-image')">
+                    <img src="Underwearpb3.png" alt="Prune Underwear 3" onclick="toggleClothing('underwear-p3-image')">
+                    <img src="Underwearpb4.png" alt="Prune Underwear 4" onclick="toggleClothing('underwear-p4-image')">
+                </div>
+                <div class="category">
+                    <h3>Bodysuit</h3>
+                    <img src="Bodysuitpb.png" alt="Prune Bodysuit" onclick="toggleClothing('bodysuit-p-image')">
+                </div>
+                <div class="category">
+                    <h3>Accessory</h3>
+                    <img src="Accessorypb.png" alt="Prune Accessory" onclick="toggleClothing('accessory-p-image')">
+                    <img src="Accessorypb2.png" alt="Prune Accessory 2" onclick="toggleClothing('accessory-p2-image')">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function enterGame() {
+            document.querySelector('.main-menu').style.display = 'none';
+            document.querySelector('.game-container').style.display = 'block';
+        }
+
+        // Function to toggle visibility of clothing items
+        function toggleClothing(itemId) {
+            const itemImage = document.getElementById(itemId);
+            itemImage.style.visibility = itemImage.style.visibility === 'visible' ? 'hidden' : 'visible';
+        }
+    </script>
+</body>
+</html>
